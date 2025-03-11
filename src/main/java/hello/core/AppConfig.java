@@ -1,4 +1,5 @@
 package hello.core;
+
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.MemberRepository;
@@ -18,6 +19,7 @@ public class AppConfig {
         System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
+
     @Bean
     public OrderService orderService() {
         //1번
@@ -26,12 +28,14 @@ public class AppConfig {
                 memberRepository(),
                 discountPolicy());
     }
+
     @Bean
     public MemberRepository memberRepository() {
         //2번? 3번?
         System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
+
     @Bean
     public DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
